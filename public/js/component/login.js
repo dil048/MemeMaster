@@ -1,5 +1,5 @@
-import { providers,ui } from "../firebase/credentials.js";
-import { createAccount,signIn } from "../firebase/authentication.js"
+// import { providers,ui } from "../firebase/credentials.js";
+// import { createAccount,signIn } from "../firebase/authentication.js"
 
 let div = document.createElement("div");
 let log = document.createElement("div");
@@ -7,19 +7,14 @@ let reg = document.createElement("div");
 let loginForm = document.createElement("form");
 let registerForm = document.createElement("form");
 
-class Login extends HTMLElement {
-  connectedCallback() {
-    this.shadow = this.attachShadow({mode: 'open'});
-    this.render();
-  }
-  hide() {
+  function hide() {
     div.style.display = "none";
   }
-  show() {
+  function show() {
     div.style.display = "block";
   }
 
-  loginSubmit(){
+  function loginSubmit(){
     let userEmail = document.getElementById('loginUser').value;
     let password = document.getElementById('loginPassword').value;
     console.log(userEmail);
@@ -28,7 +23,7 @@ class Login extends HTMLElement {
     return false;
   }
 
-  registerSubmit() {
+  function registerSubmit() {
     let userEmail = document.getElementById('registerEmail').value;
     let password1 = document.getElementById('registerPassword1').value;
     let password2 = document.getElementById('registerPassword2').value;
@@ -39,7 +34,7 @@ class Login extends HTMLElement {
     createAccount(userEmail,password1,this.alertMessage);
   }
 
-  alertMessage(success,message){
+  function alertMessage(success,message){
     if(success){
       div.style.display = "none"
       alert(message)
@@ -47,7 +42,7 @@ class Login extends HTMLElement {
     alert(message);
   }
 
-  render() {
+  function render() {
     // set body styles
     document.body.style.color = "#000";
     document.body.style.textTransform = "capitalize";
@@ -55,10 +50,13 @@ class Login extends HTMLElement {
     // set main-div styles
     div.style.background = "#fff";
     div.style.width = "300px";
-    div.style.margin = "30px auto";
-    div.style.padding = "10px";
+    //div.style.margin = "30px auto";
+    //div.style.padding = "10px";
+    div.style.position = "absolute";
     div.style.borderRadius = "10px";
-    //div.style.display = "none";
+    div.style.border = "1px black solid";
+    div.style.zIndex = 1;
+    div.style.display = "none";
 
     log.style.display = "inline-block";
     log.style.color = "#000";
@@ -110,7 +108,7 @@ class Login extends HTMLElement {
       "' /><br/>" +
       "<input id='loginBtn' type='submit' value='Login' style='" +
       btnStyles +
-      "' />" +
+      "' />" + 
       "<div id='firebaseui-auth-container'></div>";
 
     // set registerForm styles
@@ -138,24 +136,16 @@ class Login extends HTMLElement {
       "<input id='registerBtn' type ='submit' value='Register' style='" +
       btnStyles +
       "' />";
-
+    //let firebaseUIDiv = document.createElement('div');
+    //firebaseUIDiv.id = "firebaseui-auth-container";
     // append the bottons and form on main-div
     div.appendChild(log);
     div.appendChild(reg);
     div.appendChild(loginForm);
     div.appendChild(registerForm);
-    console.log("ssss");
-    // append main-div on the body
-    this.shadow.appendChild(div);
-    console.log(this.shadow)
-  }
-}
+    //div.appendChild(firebaseUIDiv);
 
-try {
-  customElements.define("login-form", Login);
-} catch (err) {
-  const h3 = document.createElement("h3");
-  h3.innerHTML =
-    "This site uses webcomponents which don't work in all browsers! Try this site in a browser that supports them!";
-  document.body.appendChild(h3);
-}
+    // append main-div on the body
+    document.body.appendChild(div);
+    return div;
+  }

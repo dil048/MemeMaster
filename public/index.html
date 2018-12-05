@@ -11,21 +11,24 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
     <script type="module" src="js/component/memeCreater.js"></script>
-    
-    <script type="module" src="js/component/login.js"></script>
+    <script type="module" src="js/firebase/credentials.js"></script>
+    <script type ="module" src="js/firebase/authentication.js"></script>
+    <script type="text/javascript" src="js/component/login.js"></script>
     
   </head>
   <body>
     <h1>Welcome to meme master!</h1>
     <button id="signInBtn">Click me</button>
-    <login-form id="loginForm" style="display:none"></login-form>
-    <div id="firebaseui-auth-container"></div>
     <meme-canvas></meme-canvas>
-    <script>
+    <script >
+      let d = null;
+      window.onload = () => {
+        d = render();
+      }
       var modal = document.getElementById('loginForm');
       var login = document.getElementById('signInBtn');
       login.onclick = ()=>{
-        modal.style.display = 'block';
+        d.style.display = "block";
       }
     </script>
   </body>
