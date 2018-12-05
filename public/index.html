@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Welcome to MemeMaster</title>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+
+    <script type="module" src="js/component/memeCreater.js"></script>
+    
+    <script type="module" src="js/component/login.js"></script>
+    
   </head>
   <body>
     <h1>Welcome to meme master!</h1>
+    <button id="signInBtn">Click me</button>
+    <login-form id="loginForm" style="display:none"></login-form>
+    <div id="firebaseui-auth-container"></div>
+    <meme-canvas></meme-canvas>
+    <script>
+      var modal = document.getElementById('loginForm');
+      var login = document.getElementById('signInBtn');
+      login.onclick = ()=>{
+        modal.style.display = 'block';
+      }
+    </script>
   </body>
 </html>
