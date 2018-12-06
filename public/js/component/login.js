@@ -1,6 +1,3 @@
-// import { providers,ui } from "../firebase/credentials.js";
-// import { createAccount,signIn } from "../firebase/authentication.js"
-
 let div = document.createElement("div");
 let log = document.createElement("div");
 let reg = document.createElement("div");
@@ -42,7 +39,7 @@ let registerForm = document.createElement("form");
     alert(message);
   }
 
-  function render() {
+  function loginRender() {
     // set body styles
     document.body.style.color = "#000";
     document.body.style.textTransform = "capitalize";
@@ -85,8 +82,8 @@ let registerForm = document.createElement("form");
     };
 
     // create some variables for styling
-    var inputStyles = "";
-    var btnStyles = "";
+    let inputStyles = "";
+    let btnStyles = "";
 
     // set loginForm styles
     loginForm.style.margin = "50px 20px 20px 20px";

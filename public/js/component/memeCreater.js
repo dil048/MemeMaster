@@ -1,34 +1,32 @@
-let canvas = document.createElement('canvas');
+let canvas = document.createElement("canvas");
+let context = canvas.getContext("2d");
+let defaultImage = "/public/default_picture.png"
 class meme extends HTMLElement {
   connectedCallback() {
     this.shadow = this.attachShadow({mode:"open"});
-    this.imgSrc = this.getAttribute("imgSrc");
-    this.top = this.getAttribute("top");
-    this.bottom = this.getAttribute("bottom");
-    this.render();
+    this.imgSrc = defaultImage;
+    this.top = ""
+    this.bottom = "";
+    this.render({imgSrc : this.imgSrc,topText : this.top,bottomText : this.bottom});
   }
-  updateBackGround(src){
-    this.imgSrc = src;
-    this.top = this.getAttribute("top");
-    this.bottom = this.getAttribute("bottom");
-    this.render();
-  } 
-  render(){
-    var img = new Image();
-    canvas.width = '1500';
-    canvas.height = '800';
+  render({imgSrc=null,topText=null,bottomText=null}){
+    let img = new Image();
     canvas.id = 'uploadedImage';
     canvas.style.border = '1px solid #d3d3d3'
-    console.log(this.imgSrc);
+    this.imgSrc = (imgSrc!=null && imgSrc!=undefined) ? imgSrc : this.imgSrc ;
     img.src = this.imgSrc;
-    let context = canvas.getContext("2d");
-    context.font="100px Georgia"
+    this.top = (topText!=null && topText!=undefined) ? topText : this.top;
+    this.bottom = (bottomText!=null && bottomText != undefined) ? bottomText : this.bottom;
     img.onload = () => {
-      console.log(img.width);
-      context.drawImage(img,200,200);
-      context.fillText(this.top,200,500)
-      context.fillText(this.bottom,200,700)
-      console.log(context);
+      if(img.src!=defaultImage){
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context.font="100px Arial";
+        context.clearRect(0,0,canvas.width,canvas.length);
+        context.drawImage(img,0,0);
+        context.fillText(this.top,200,500)
+        context.fillText(this.bottom,200,700)
+      }
     };
     this.shadow.appendChild(canvas);
   }
