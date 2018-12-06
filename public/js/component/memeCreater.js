@@ -1,26 +1,36 @@
 let canvas = document.createElement('canvas');
 class meme extends HTMLElement {
   connectedCallback() {
-    this.createShadowRoot();
-    //this.text = this.getAttribute("text");
-    //this.size = this.getAttribute("font-size");
+    this.shadow = this.attachShadow({mode:"open"});
+    this.imgSrc = this.getAttribute("imgSrc");
+    this.top = this.getAttribute("top");
+    this.bottom = this.getAttribute("bottom");
     this.render();
   }
+  updateBackGround(src){
+    this.imgSrc = src;
+    this.top = this.getAttribute("top");
+    this.bottom = this.getAttribute("bottom");
+    this.render();
+  } 
   render(){
     var img = new Image();
-    canvas.width = '240';
-    canvas.height = '270';
+    canvas.width = '1500';
+    canvas.height = '800';
+    canvas.id = 'uploadedImage';
     canvas.style.border = '1px solid #d3d3d3'
-
-    img.src = '/public/google2.0.0.jpg';
+    console.log(this.imgSrc);
+    img.src = this.imgSrc;
     let context = canvas.getContext("2d");
-    console.log(context);
+    context.font="100px Georgia"
     img.onload = () => {
-      console.log("asdf");
-      context.drawImage(img, 100, 100, 150, 110, 0, 0, 300, 220);
+      console.log(img.width);
+      context.drawImage(img,200,200);
+      context.fillText(this.top,200,500)
+      context.fillText(this.bottom,200,700)
+      console.log(context);
     };
-    context.drawImage(img, 100, 100, 150, 110, 0, 0, 300, 220);
-    document.body.appendChild(canvas);
+    this.shadow.appendChild(canvas);
   }
 }
 
