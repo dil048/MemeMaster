@@ -35,13 +35,15 @@
   </header>
   <main>
       <h1>Welcome to meme master!</h1>
-      <meme-canvas id="memeCreator" imgSrc="./make-memes-great-again-made-on-imgur-its-time-we-3850456.png" top="TOP TEXT"
+      <meme-canvas id="memeCreator" imgSrc="/public/default_picture.png" top="TOP TEXT"
         bottom="BOTTOM TEXT"></meme-canvas>
       <input type="hidden" role="uploadcare-uploader" id="uploadedImage" data-images-only />
       <label>Top Text</label>
       <input id="topText" type="text" placeholder="Top Text" />
       <label>Bottom Text</label>
       <input id="bottomText" type="text" placeholder="Bottom Text" />
+      <button id="resetBtn">reset</button>
+      <button id="generateBtn">generate</button>
   </main>
   <script type="text/javascript" src="js/component/login.js"></script>
   <script type="text/javascript" src="js/controller/mainPageController.js"></script>
