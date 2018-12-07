@@ -22,5 +22,9 @@ function signIn(email, password){
     console.log(error.message);
   })
 }
+function changePassword(){
+  console,log("int here");
+  console.log(authentication);
+}
 
-export {createAccount,signIn};
+export {createAccount,signIn, changePassword};
