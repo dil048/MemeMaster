@@ -1,3 +1,4 @@
+import {createAccount,signIn} from "../firebase/firebaseActions.js"
 let div = document.createElement("div");
 div.className = "login-container";
 let log = document.createElement("div");
@@ -17,8 +18,6 @@ function show() {
 function loginSubmit() {
   let userEmail = document.getElementById('loginUser').value;
   let password = document.getElementById('loginPassword').value;
-  console.log(userEmail);
-  console.log(password);
   signIn(userEmail, password)
   return false;
 }
@@ -31,7 +30,7 @@ function registerSubmit() {
     alert("Password does not match");
     return false;
   }
-  createAccount(userEmail, password1, this.alertMessage);
+  createAccount(userEmail, password1, alertMessage);
 }
 
 function alertMessage(success, message) {
@@ -42,7 +41,7 @@ function alertMessage(success, message) {
   alert(message);
 }
 
-function loginRender() {
+function render() {
   // set body styles
   document.body.style.color = "#000";
   document.body.style.textTransform = "capitalize";
@@ -91,7 +90,7 @@ function loginRender() {
   loginForm.id = "loginForm";
   loginForm.onsubmit = (event) => {
     event.preventDefault();
-    this.loginSubmit();
+    loginSubmit();
   };
 
   // set the elements and styles on the form
@@ -114,7 +113,7 @@ function loginRender() {
   registerForm.id = "registerForm";
   registerForm.onsubmit = (event) => {
     event.preventDefault();
-    this.registerSubmit();
+    registerSubmit();
   };
   // set the elements and styles on the form
   registerForm.innerHTML =
@@ -146,3 +145,5 @@ function loginRender() {
   document.body.appendChild(div);
   return div;
 }
+
+export {render,show};
