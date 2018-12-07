@@ -1,0 +1,155 @@
+
+body{
+    margin:0;
+}
+/*For header*/
+header{
+    background-color: black;
+    padding: 5px;
+}
+.signInBtn{
+    text-align: center;
+    float: right;
+    width: 150px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: gray;
+    margin-top: 15px;
+    padding: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 15px;
+    cursor: pointer; 
+    color: white !important;
+}
+
+.signInBtn:hover {
+    background-color: lightgray;
+}
+.search-container {
+    position: relative;
+    width: 80%;
+    left: 30%;
+}
+.search-container input{
+    font-size: 15px;
+    border: none;
+    margin-right: 0;
+    width: 400px;
+    cursor: text;
+    padding: 5px;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+.search-container button{
+    font-size: 15px;
+    cursor: pointer; 
+    border: none;
+    margin: 0;
+    padding: 5px;
+    padding-left: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; 
+    width: 100px;
+    background-color: gray;
+    font-weight: bold;
+    color: white;
+}
+.search-container button:hover{
+    background-color: lightgray;
+}
+.iconText{
+    margin: 20px;
+    font-size: 50px;
+    font-family: Impact, Charcoal, sans-serif;
+    color: orange;
+}
+
+/*Log in*/
+.login-container{
+    position: absolute;
+    background-color: #222;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    border-radius: 10px;
+    border: none; 
+    z-index: 1;
+    text-align: center;
+}
+
+.loginTitle {
+    color: orange;
+    font-family: Impact, Charcoal, sans-serif;
+}
+
+#loginUser, #loginPassword, #registerEmail, #registerPassword1, #registerPassword2{
+    color: white; 
+    font-size: 20px;
+    position: relative;
+    padding-left: 10px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 30px; 
+    background-color: #222;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: orange;
+    border-bottom-style: solid 1px;
+}
+
+#loginBtn{
+    margin-top: 20px; 
+    height: 30px;
+    background-color: lightgray;
+    width: 40%;
+    border-radius: 10px; 
+    font-size: 15px; 
+    background-color: orange;
+    border: none;
+    color: white; 
+}
+#loginUser, #loginPassword, #registerEmail, #registerPassword1, #registerPassword2:focus {
+    outline: none; 
+}
+
+/*Style for profile page*/
+.profile-container{
+    margin: 20px;
+}
+.profileBtn{
+    text-align: center;
+    width: 200px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: gray;
+    margin-top: 15px;
+    padding: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 15px;
+    cursor: pointer; 
+    color: white !important;
+}
+.profileBtn:hover{
+    background-color: lightgray; 
+}
+
+.profileBtn:focus{
+    outline: none; 
+}
+.profileImg{
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%;
+    border: solid 2px;
+    border-color: darkgray;
+}

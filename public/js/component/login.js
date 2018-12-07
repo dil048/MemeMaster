@@ -1,9 +1,9 @@
-// import { providers,ui } from "../firebase/credentials.js";
-// import { createAccount,signIn } from "../firebase/authentication.js"
 
 let div = document.createElement("div");
+div.className = "login-container";
 let log = document.createElement("div");
 let reg = document.createElement("div");
+let title = document.createElement("h1");
 let loginForm = document.createElement("form");
 let registerForm = document.createElement("form");
 
@@ -20,7 +20,7 @@ function loginSubmit() {
   let password = document.getElementById('loginPassword').value;
   console.log(userEmail);
   console.log(password);
-  signIn(userEmail, password)
+  signIn(userEmail, password);
   return false;
 }
 
@@ -43,22 +43,16 @@ function alertMessage(success, message) {
   alert(message);
 }
 
-function render() {
+function loginRender() {
   // set body styles
   document.body.style.color = "#000";
   document.body.style.textTransform = "capitalize";
   document.body.style.backgroundSize = "cover";
   // set main-div styles
-  div.style.background = "#fff";
-  div.style.width = "300px";
+  //div.style.background = "#fff";
   //div.style.margin = "30px auto";
   //div.style.padding = "10px";
-  div.style.position = "absolute";
-  div.style.borderRadius = "10px";
-  div.style.border = "1px black solid";
-  div.style.zIndex = 1;
   div.style.display = "none";
-
   log.style.display = "inline-block";
   log.style.color = "#000";
   log.style.margin = "5px";
@@ -85,12 +79,16 @@ function render() {
     registerForm.style.display = "block";
   };
 
+  title.className = "loginTitle";
+  title.textContent = "MemeMaster";
+
   // create some variables for styling
   var inputStyles = "";
   var btnStyles = "";
 
   // set loginForm styles
-  loginForm.style.margin = "50px 20px 20px 20px";
+  loginForm.style.margin = "50px 30px 20px 30px";
+  loginForm.className = "loginForm";
   loginForm.id = "loginForm";
   loginForm.onsubmit = (event) => {
     event.preventDefault();
@@ -99,12 +97,11 @@ function render() {
 
   // set the elements and styles on the form
   loginForm.innerHTML =
-    "<label>username</label><br/>" +
-    "<input id='loginUser' type='text' placeholder=' username' style='" +
+    "<br/>" +
+    "<input id='loginUser' type='text' placeholder='Username' style='" +
     inputStyles +
-    "' /><br/>" +
-    "<label>password</label><br/>" +
-    "<input id='loginPassword' type='password' placeholder='*********' style='" +
+    "' /><br/><br/><br/>" +
+    "<input id='loginPassword' type='password' placeholder='Password' style='" +
     inputStyles +
     "' /><br/>" +
     "<input id='loginBtn' type='submit' value='Login' style='" +
@@ -122,16 +119,15 @@ function render() {
   };
   // set the elements and styles on the form
   registerForm.innerHTML =
-    "<label>e-mail</label><br/>" +
-    "<input id='registerEmail' type='email' placeholder='your email' style='" +
+    "<input id='registerEmail' type='email' placeholder='Your Email' style='" +
     inputStyles +
     "' /><br/>" +
-    "<label>password</label><br/>" +
-    "<input id='registerPassword1' type='password' placeholder='*************' style='" +
+    "<br/>" +
+    "<input id='registerPassword1' type='password' placeholder='Password' style='" +
     inputStyles +
     "' /><br/>" +
-    "<label>confirm password</label><br/>" +
-    "<input id='registerPassword2' type='password' placeholder='*************' style='" +
+    "<br/>" +
+    "<input id='registerPassword2' type='password' placeholder='Confirm Password' style='" +
     inputStyles +
     "' /><br/>" +
     "<input id='registerBtn' type ='submit' value='Register' style='" +
@@ -141,12 +137,14 @@ function render() {
   //firebaseUIDiv.id = "firebaseui-auth-container";
   // append the bottons and form on main-div
   div.appendChild(log);
-  div.appendChild(reg);
+  div.appendChild(title);
   div.appendChild(loginForm);
   div.appendChild(registerForm);
   //div.appendChild(firebaseUIDiv);
+  div.appendChild(reg);
 
   // append main-div on the body
   document.body.appendChild(div);
   return div;
 }
+
