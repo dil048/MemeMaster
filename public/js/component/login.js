@@ -1,6 +1,3 @@
-// import { providers,ui } from "../firebase/credentials.js";
-// import { createAccount,signIn } from "../firebase/authentication.js"
-
 let div = document.createElement("div");
 div.className = "login-container";
 let log = document.createElement("div");
@@ -45,7 +42,7 @@ function alertMessage(success, message) {
   alert(message);
 }
 
-function render() {
+function loginRender() {
   // set body styles
   document.body.style.color = "#000";
   document.body.style.textTransform = "capitalize";
@@ -139,7 +136,6 @@ function render() {
   //firebaseUIDiv.id = "firebaseui-auth-container";
   // append the bottons and form on main-div
   div.appendChild(log);
-
   div.appendChild(title);
   div.appendChild(loginForm);
   div.appendChild(registerForm);

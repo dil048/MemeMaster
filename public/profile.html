@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MemeMaster</title>
+
+    <!-- Firebase API -->
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+
+    <!-- External scripts for uploadcare UI component -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.min.js"></script>
+    <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.min.js"></script>
+
+    <script type="module" src="js/firebase/credentials.js"></script>
+    <script type="module" src="js/firebase/authentication.js"></script>
+    <script type="module" src="js/component/memeCreater.js"></script>
+</head>
+
+<body>
+    <header>
+        <label class="iconText">MemeMaster</label>
+        <a class="signInBtn" id="signInBtn">Sign in</a>
+        <div class="search-container">
+            <input placeholder="Enter a topic or tag" id="searchInput" name="searchInput"><button class="submit" type="submit">Search</button>
+        </div>
+    </header>
+    <main>
+        <div>
+            <img>
+            <a>Change Password</a>
+            <a>Upload Icon</a>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

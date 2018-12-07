@@ -6,31 +6,32 @@ body{
 header{
     background-color: black;
     padding: 5px;
-    height: 100px; 
-
 }
 .signInBtn{
     float: right;
+    width: 150px;
     font-family: "Comic Sans MS", cursive, sans-serif;
     border: none;
     border-radius: 10px;
     color: white;
+    font-weight: bold;
     background-color: gray;
     margin: 5px;
+    margin-top: 15px;
     padding: 7px;
     padding-left: 14px;
     padding-right: 14px;
-    font-size: 10px;
+    font-size: 15px;
     cursor: pointer; 
 }
-a:hover {
+
+button:hover {
     background-color: lightgray;
 }
 .search-container {
     position: relative;
+    width: 80%;
     left: 30%;
-    top: 2px;
-    padding: 5px;
 }
 .search-container input{
     font-size: 15px;
@@ -57,6 +58,9 @@ a:hover {
     background-color: gray;
     font-weight: bold;
     color: white;
+}
+.search-container button:hover{
+    background-color: lightgray;
 }
 .iconText{
     margin: 20px;
