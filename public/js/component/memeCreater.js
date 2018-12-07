@@ -1,10 +1,15 @@
 let canvas = document.createElement("canvas");
 let context = canvas.getContext("2d");
-let defaultImage = "/public/default_picture.png"
+let uploadInput = document.createElement("input").cloneNode(true);
+let defaultImage = "./default_picture.jpg"
+let defaultTopText = "TIME TO MAKE";
+let defaultBottomText = "MEME GREAT AGAIN!";
+
 class meme extends HTMLElement {
   connectedCallback() {
+    console.log("sd");
     this.shadow = this.attachShadow({mode:"open"});
-    this.imgSrc = defaultImage;
+    this.imgSrc = this.getAttribute("imgSrc");
     this.top = this.getAttribute("top");
     this.bottom = this.getAttribute("bottom");
     this.render({imgSrc : this.imgSrc,topText : this.top,bottomText : this.bottom});
@@ -20,24 +25,16 @@ class meme extends HTMLElement {
     img.onload = () => {
         canvas.width = img.width;
         canvas.height = img.height;
-        context.font="100px Arial";
+        context.font="50 Arial";
         context.clearRect(0,0,canvas.width,canvas.length);
         context.drawImage(img,0,0);
-        if(!this.isDefaultPicture(img.src)){
-          context.fillText(this.top,200,500)
-          context.fillText(this.bottom,200,700)
-        }
+        context.fillText(this.top,0,200)
+        context.fillText(this.bottom,0,300)
     };
     this.shadow.appendChild(canvas);
   }
-  isDefaultPicture(imgSrc){
-    return imgSrc.includes(defaultImage);
-  }
   reset(){
-    this.imgSrc = defaultImage;
-    this.top = ""
-    this.bottom = "";
-    this.render(this.imgSrc,this.top,this.bottom);
+    location.reload();
   }
 }
 

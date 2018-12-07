@@ -1,8 +1,9 @@
+import {render as loginRender} from "../component/login.js"
+import {show} from "../component/login.js"
 let d = null;
 window.onload = () => {
   d = loginRender();
 };
-let modal = document.getElementById("loginForm");
 let login = document.getElementById("signInBtn");
 let topTextInput = document.getElementById("topText");
 let bottomTextInput = document.getElementById("bottomText");
@@ -10,7 +11,7 @@ let memeCreator = document.getElementById("memeCreator");
 let reset = document.getElementById("resetBtn");
 let generate = document.getElementById("generateBtn");
 login.onclick = () => {
-  d.style.display = "block";
+  show()
 };
 topTextInput.oninput = ()=>{
   memeCreator.render({topText: topTextInput.value});
