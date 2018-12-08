@@ -1,5 +1,6 @@
 import { db, authentication } from "./credentials.js";
 
+// Create user account with input email and password
 function createAccount(email, password, callback) {
   authentication
     .createUserWithEmailAndPassword(email, password)
@@ -20,6 +21,7 @@ function createAccount(email, password, callback) {
     });
 }
 
+// Sign in with credentials provided by the user
 function signIn(email, password, callback) {
   authentication
     .signInWithEmailAndPassword(email, password)
@@ -40,6 +42,7 @@ function signIn(email, password, callback) {
     });
 }
 
+// Get user informations, such as display name and photo
 function getUserInfo(user, setUserInfo) {
   var userinfo;
   db.ref("profile/" + user.uid)
@@ -59,10 +62,12 @@ function getUserInfo(user, setUserInfo) {
     });
 }
 
+// Change user's photo
 function updateIcon(user, URLString) {
   db.ref("profile/" + user.uid).update({photoURL: URLString});
 }
 
+// Change password, login in first to verify that the current password is correct
 function changePassword(user, oriPw, newPw) {
   authentication
     .signInWithEmailAndPassword(user.email, oriPw)
@@ -85,6 +90,7 @@ function changePassword(user, oriPw, newPw) {
     });
 }
 
+// Add meme to user meme history
 function addMemeToAccount(uid, meme) {
   let topText = meme.topText;
   let bottomText = meme.bottomText;
@@ -107,8 +113,9 @@ function addMemeToAccount(uid, meme) {
       console.log(error.message);
     });
 }
+
+// Get all of user's memes
 function getUserMeme(uid,callback) {
-  console.log(uid);
   db.ref("profile/" + uid + "/memes")
     .once("value")
     .then(snapshot => {
@@ -116,4 +123,10 @@ function getUserMeme(uid,callback) {
       callback(snapshot.val());
     });
 }
-export { createAccount, signIn, changePassword, getUserInfo, addMemeToAccount,getUserMeme,updateIcon };
+
+// Delete user's meme
+function deleteMeme(uid,memeId){
+  console.log("profile/" + uid + "/memes/"+memeId);
+  db.ref("profile/" + uid + "/memes").child(memeId).remove();
+}
+export { createAccount, signIn, changePassword, getUserInfo, addMemeToAccount,getUserMeme,updateIcon,deleteMeme };
