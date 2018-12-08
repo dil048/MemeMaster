@@ -83,12 +83,15 @@ header{
     position: absolute;
     background-color: #222;
     margin: 0;
-    padding: 0;
     width: 300px;
     border-radius: 10px;
     border: none; 
     z-index: 1;
     text-align: center;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
 }
 
 .loginTitle {

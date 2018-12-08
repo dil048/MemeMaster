@@ -22,6 +22,7 @@ function loginSubmit() {
   let userEmail = document.getElementById('loginUser').value;
   let password = document.getElementById('loginPassword').value;
   signIn(userEmail, password, updateIcon);
+  hide();
   return false;
 }
 

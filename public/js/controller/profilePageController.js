@@ -6,7 +6,6 @@ import {
 } from "../firebase/credentials.js"
 
 let changePwBtn = document.getElementById("changePwBtn");
-
 let uploadBtn = document.getElementById("uploadBtn");
 var modal = document.getElementById('myModal');
 //console.log(modal);
