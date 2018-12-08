@@ -18,8 +18,9 @@ let recentMemeList = [];
 window.onload = () => {
   authentication.onAuthStateChanged(function(user) {
     if (user) {
+      console.log(user);
       getUserInfo(user, setUserInfo);
-      getUserMeme(user.uid,setUpTable);
+      //getUserMeme(user.uid,setUpTable);
     } else {
       console.log("user not signed in");
     }
@@ -38,7 +39,7 @@ function setUserInfo(user,name,email,profileImgUrl){
 
     let icon = document.getElementById("profileImg");
     icon.src = profileImgUrl; 
-    
+
     userInfo = {
       curruser: user,
       username: name,
@@ -83,8 +84,9 @@ signOutBtn.onclick = () => {
 closeBtn.onclick = () => {
     modal.style.display = "none";
 }
-
+console.log(changeBtn.innerText);
 changeBtn.onclick = () => {
+  console.log("clicked");
     let imgCode = Math.floor((Math.random() * 1000) + 1);
     let URLString = "http://api.adorable.io/avatars/285/" + imgCode + ".png";
     let icon = document.getElementById("profileImg");
@@ -96,7 +98,6 @@ changeBtn.onclick = () => {
     console.log(URLString);
     updateIcon(userInfo.curruser, URLString);
 };
-uploadBtn.onclick = () => {};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = (event) => {
