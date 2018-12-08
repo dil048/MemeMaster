@@ -1,17 +1,40 @@
 import { render as loginRender } from "../component/login.js";
 import { show } from "../component/login.js";
 import { authentication } from "../firebase/credentials.js";
-import { addMemeToAccount } from "../firebase/firebaseActions.js";
+import { addMemeToAccount, getUserInfo } from "../firebase/firebaseActions.js";
+import { render } from "../component/login.js"
 
+// Elements needed to help generate meme
 let canvas = document.getElementById("memeCreator");
 let save = document.getElementById("saveToFireBase");
 let copyText = document.getElementById("copyText");
 let shortenLink = document.getElementById("shortenLink");
 let downloadBtn = document.getElementById('btndownload');
+
 let meme = null;
 let userId = null;
 let memeUri = null;
+
+// Elements needed for sign in
+let login = document.getElementById("signInBtn");
+let signModal = document.getElementById("signinModal");
+let reg = document.getElementById("register");
+let log = document.getElementById("login");
+let loginForm = document.getElementById("loginForm");
+let registerForm = document.getElementById("registerForm");
+
 window.onload = () => {
+  // Check whether user loged in
+  authentication.onAuthStateChanged(function(user) {
+    if (user) {
+        console.log("signed in");
+        userId = user.uid;
+        getUserInfo(user, updateProfileBtn);
+    } else {
+        console.log("user not signed in");
+    }
+  });
+  // Save meme
   meme = JSON.parse(localStorage.getItem("canvasSaved"));
   if (meme == null) {
     window.location.href = "../../404.html";
@@ -22,13 +45,36 @@ window.onload = () => {
     topText: meme.top,
     bottomText: meme.bottom
   });
-  authentication.onAuthStateChanged(user => {
-    if (user) {
-      userId = user.uid;
-    }
-  });
   createTinyURL(memeUri);
+  render();
 };
+
+// User profile button on top right, check whether to sign in or can go to profile page
+login.onclick = () => {
+  let status = document.getElementById("signInBtn");
+  if(status) {
+    show();
+  } else {
+    window.location.href = "./profile.html"
+  }
+};
+
+// Update top right button is signed in
+function updateProfileBtn(user, name, email, profileImgUrl){
+  console.log("calling here")
+  let signinBtn = document.getElementById("signInBtn");
+  signinBtn.innerText = name;
+  signinBtn.id = "profileBtn";
+  userInfo = {
+      curruser : user, 
+      username : name,
+      useremail : email,
+      userphotoUrl : profileImgUrl,
+      //userid : user.uid,
+  }
+}
+
+// Meme download
 downloadBtn.onclick = function(){
   download(canvas, 'myimage.png');
 };
@@ -78,6 +124,16 @@ copyText.onclick = ()=>{
   shortenLink.select();
   document.execCommand("copy");
 }
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (signModal) {
+    if (event.target == signModal) {
+      signModal.style.display = "none";
+    }
+  }
+}
+
 function createTinyURL(url){
   let accessToken = '8324dba029eabe687eaa842b81d508a45b5b84f0';
 
@@ -92,7 +148,7 @@ function createTinyURL(url){
       long_url:url
     }
   }).then((res)=>{
-    console.log(res.data);
+    //console.log(res.data);
     let url = res.data.link;
     shortenLink.value = url;
     let urlEncoded = "https://www.facebook.com/plugins/share_button.php?href=" + 

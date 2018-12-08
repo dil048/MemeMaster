@@ -64,7 +64,7 @@ function registerSubmit() {
 function alertMessage(success, message) {
   if (success) {
     signModal.style.display = "none"
-    alert("Successfully create account! Please log in.");
+    alert("Successfully create account! Logging in now.");
   }
 }
 

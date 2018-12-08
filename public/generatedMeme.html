@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Firebase API -->
-    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="./style.css" />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css"
-    />
 
-    <!-- axios API -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<head>
+  <!-- Firebase API -->
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="./style.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
-    <script type="module" src="js/firebase/credentials.js"></script>
-    <script type="module" src="js/firebase/firebaseActions.js"></script>
-    <script type="module" src="js/component/memeCreater.js"></script>
-  </head>
-  <body>
-    <h1>hihi</h1>
+  <!-- axios API -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script type="module" src="js/firebase/credentials.js"></script>
+  <script type="module" src="js/firebase/firebaseActions.js"></script>
+  <script type="module" src="js/component/memeCreater.js"></script>
+</head>
+
+<body>
+  <header>
+      <label class="iconText"><a class="profileTitleLink" href="./index.html">MemeMaster</a></label>
+      <button class="signInBtn" id="signInBtn">Sign in</button>
+  </header>
+  <main class= "generate-page-main">
+    <h1>SaY hI tO yOuR nEw MeMe !</h1>
     <meme-canvas id="memeCreator" imgSrc="" top="" bottom=""></meme-canvas>
-    <script
-      type="module"
-      src="js/controller/generateMemeController.js"
-    ></script>
-    <button id="saveToFireBase">save</button>
-    <input id="shortenLink" value="Generating" />
-    <button id="copyText">Copy text</button>
-    <button id="btndownload">Download</button>
-    <div id="socialMedia">
-        
+    <script type="module" src="js/controller/generateMemeController.js"></script>
+    <br>
+    <button id="saveToFireBase" class="generateBtn">Save</button>
+    <input id="shortenLink" value="Generating"/>
+    <button id="copyText" class="generateBtn">Copy text</button>
+    <button id="btndownload" class="generateBtn">Download</button>
+    <br><br>
+    <div id="socialMedia"></div>
+
+    <div id="signinModal" class="login-container">
+        <div class="m-content">
+            <h2 class="m-header">MemeMaster</h2>
+            <form class="m-body loginForm" id="loginForm">
+                <p class="prompt"> Log In </p>
+                <br>
+                <input id='loginUser' type='text' placeholder='Your Email'/>
+                <br><br> 
+                <input id='loginPassword' type='password' placeholder='Password' />
+                <br><br>
+                <input id='loginBtn' type ='submit' value='Login'>
+                <div id='firebaseui-auth-container'></div>
+                <br>
+                <p class="prompt">Need an account? <br><a id ='register'>Register</a> here!</p>
+            </form>
+  
+            <form class="m-body registerForm" id="registerForm">
+              <p class="prompt"> Sign Up</p>
+              <br>
+              <input id='registerEmail' type='email' placeholder='Your Email'/>
+              <br><br> 
+              <input id='registerPassword1' type='password' placeholder='Password' />
+              <br><br>
+              <input id='registerPassword2' type='password' placeholder='Confirm Password' />
+              <br><br>
+              <input id='registerBtn' type ='submit' value='Register'>
+              <br>
+              <p class="prompt">Have an account? <br><a id='login'>Login</a> here!</p>
+            </form>
+        </div>
     </div>
-    
-  </body>
+
+  </main>
+
+
+</body>
+
 </html>

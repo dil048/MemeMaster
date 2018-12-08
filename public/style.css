@@ -6,6 +6,7 @@ html, body{
 header{
     background-color: black;
     padding: 5px;
+    height: 100px;
 }
 .signInBtn{
     text-align: center;
@@ -353,4 +354,33 @@ header{
     border-radius: 35px;
     margin: 20px;
     
+}
+
+/*Generate page*/
+.generate-page-main{
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.generateBtn{
+    text-align: center;
+    width: 100px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: gray;
+    margin-top: 15px;
+    padding: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 15px;
+    cursor: pointer; 
+    color: white !important;
+}
+
+#shortenLink {
+    height: 30px;
+    text-align: center;
 }
