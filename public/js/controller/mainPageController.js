@@ -1,12 +1,39 @@
 import { render as loginRender } from "../component/login.js";
 import { show } from "../component/login.js";
+import {
+  authentication
+} from "../firebase/credentials.js"
+import {
+  getUserInfo
+} from "../firebase/firebaseActions.js"
 let d = null;
 window.onload = () => {
   d = loginRender();
   memeCreator.render({defaultSetting:true});
   topTextInput.value = memeCreator.top;
   bottomTextInput.value = memeCreator.bottom;
+  authentication.onAuthStateChanged(function(user) {
+    if (user) {
+        console.log("signed in");
+        getUserInfo(user, updateProfileBtn);
+    } else {
+        console.log("user not signed in");
+    }
+  });
 };
+
+function updateProfileBtn(user, name, email, profileImgUrl){
+  let signinBtn = document.getElementById("signInBtn");
+  signinBtn.innerText = name;
+  userInfo = {
+      curruser : user, 
+      username : name,
+      useremail : email,
+      userphotoUrl : profileImgUrl,
+      //userid : user.uid,
+  }
+}
+
 let login = document.getElementById("signInBtn");
 let topTextInput = document.getElementById("topText");
 let bottomTextInput = document.getElementById("bottomText");
@@ -57,7 +84,7 @@ generate.onclick = () => {
           top: topText,
           bottom: bottomText
         }));
-        window.location.href = "../../generatedMeme.html";
+        window.location.href = "generatedMeme.html";
       })
       .catch(function(error) {
         console.log(error.message);

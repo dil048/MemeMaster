@@ -8,8 +8,7 @@ import {
 let changePwBtn = document.getElementById("changePwBtn");
 let uploadBtn = document.getElementById("uploadBtn");
 var modal = document.getElementById('myModal');
-//console.log(modal);
-// Get the <span> element that closes the modal
+var signOutBtn = document.getElementById('signoutBtn');
 var closeBtn = document.getElementById("closeBtn");
 var confirmChangeBtn = document.getElementById("confirmChangeBtn");
 let userInfo;
@@ -28,7 +27,9 @@ window.onload = () => {
 };
 function setUserInfo(user, name,email,profileImgUrl){
     let signinBtn = document.getElementById("signInBtn");
-    signinBtn.innerText = name;
+    console.log(profileImgUrl);
+    signinBtn.textContent = name;
+    //signinBtn.innerHTML = "<img src = " + profileImgUrl + ">";
 
     userInfo = {
         curruser : user, 
@@ -42,7 +43,7 @@ changePwBtn.onclick = () => {
     modal.style.display = "block";
 }
 
-confirmChangeBtn.onclick = function() {
+confirmChangeBtn.onclick =() => {
     let password1 = document.getElementById("newPassword");
     let password2 = document.getElementById("confirmPassword");
     let originalPassword = document.getElementById("originalPassword");
@@ -56,7 +57,17 @@ confirmChangeBtn.onclick = function() {
     originalPassword.value = "";
 }
 
-closeBtn.onclick = function() {
+signOutBtn.onclick = () => {
+    authentication.signOut().then(() => {
+        console.log('Signed Out');
+        alert('Sign Out successfull!');
+        window.location.href = "./index.html"
+    }).catch((error) => {
+        console.error('Sign Out Error', error);
+    });
+}
+
+closeBtn.onclick = () => {
     modal.style.display = "none";
 }
 

@@ -9,7 +9,12 @@ function createAccount(email, password, callback) {
     .then(res => {
       let profileName = email.substring(0, email.indexOf("@"));
       console.log(profileName);
-      let defaultPic = "";
+      let defaultPic = "../";
+      let im = new Image();
+      im.src = defaultPic;
+      im.onload = () =>{
+        document.appendChild(im);
+      }
       console.log(res.user.uid);
       db.ref("profile/" + res.user.uid).set({
         displayName: profileName,
@@ -40,6 +45,7 @@ function signIn(email, password, callback) {
         });
     })
     .catch(error => {
+      alert("Failed to sign in, please try again.")
       console.log(error.message);
     });
 }

@@ -64,18 +64,34 @@
       </div>
     </div>
 
-    <div id="myModal" class="m">
+    <div id="signinModal" class="login-container">
       <div class="m-content">
           <h2 class="m-header">MemeMaster</h2>
           <form class="m-body loginForm" id="loginForm">
+              <p class="prompt"> Log In </p>
               <br>
-              <input id='registerEmail' type='email' placeholder='Your Email'/>
+              <input id='loginUser' type='text' placeholder='Your Email'/>
               <br><br> 
-              <input id='registerPassword1' type='password' placeholder='Password' />
+              <input id='loginPassword' type='password' placeholder='Password' />
               <br><br>
-              <input id='registerPassword2' type='password' placeholder='Confirm Password' />
-              <br><br>
-              <input id='registerBtn' type ='submit' value='Register'>
+              <input id='loginBtn' type ='submit' value='Login'>
+              <div id='firebaseui-auth-container'></div>
+              <br>
+              <p class="prompt">Need an account? <br><a id ='register'>Register</a> here!</p>
+          </form>
+
+          <form class="m-body registerForm" id="registerForm">
+            <p class="prompt"> Sign Up</p>
+            <br>
+            <input id='registerEmail' type='email' placeholder='Your Email'/>
+            <br><br> 
+            <input id='registerPassword1' type='password' placeholder='Password' />
+            <br><br>
+            <input id='registerPassword2' type='password' placeholder='Confirm Password' />
+            <br><br>
+            <input id='registerBtn' type ='submit' value='Register'>
+            <br>
+            <p class="prompt">Have an account? <br><a id='login'>Login</a> here!</p>
           </form>
       </div>
   </div>

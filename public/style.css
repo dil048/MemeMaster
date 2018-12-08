@@ -123,7 +123,7 @@ header{
     border-bottom-style: solid 1px;
 }
 
-#loginBtn{
+#loginBtn, #registerBtn{
     margin-top: 20px; 
     height: 30px;
     background-color: lightgray;
@@ -170,7 +170,7 @@ header{
     background-color: lightgray; 
 }
 
-.profileBtn:focus{
+.profileBtn:focus, .signoutBtn:focus{
     outline: none; 
 }
 .profileImg{
@@ -180,9 +180,30 @@ header{
     border: solid 2px;
     border-color: darkgray;
 }
+.signoutBtn {
+    text-align: center;
+    width: 200px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: 2px solid red;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: white;
+    margin-top: 15px;
+    padding: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 15px;
+    cursor: pointer; 
+    color: red;
+}
+
+.signoutBtn:hover{
+    background-color: red; 
+    color: white;
+}
 
 /* Modal Content */
-.m{
+.m, .login-container{
     display: none; /* Hidden by default */
     position: fixed;
     z-index: 1;
@@ -203,7 +224,7 @@ header{
     padding: 15px;
     padding-top: 25px;
     padding-bottom: 25px;
-    border-radius: 3px;
+    border-radius: 5px;
     width: 30% !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
@@ -304,4 +325,18 @@ header{
     font-size: 15px;
     cursor: pointer; 
     color: white !important;
+}
+
+.registerForm{
+    display: none;
+}
+
+#register, #login {
+    cursor: pointer;
+    color: orange;
+    text-decoration: underline;
+}
+
+.prompt{
+    color: lightgray;
 }
