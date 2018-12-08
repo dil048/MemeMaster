@@ -1,12 +1,12 @@
 import {
-    changePassword, getUserInfo
+    changePassword, getUserInfo, updateIcon
 } from "../firebase/firebaseActions.js"
 import {
     authentication
 } from "../firebase/credentials.js"
 
 let changePwBtn = document.getElementById("changePwBtn");
-let uploadBtn = document.getElementById("uploadBtn");
+let changeBtn = document.getElementById("uploadBtn");
 var modal = document.getElementById('myModal');
 var signOutBtn = document.getElementById('signoutBtn');
 var closeBtn = document.getElementById("closeBtn");
@@ -25,11 +25,18 @@ window.onload = () => {
 
     //nameText[0].innerHTML = "Username: " + user.displayName;
 };
-function setUserInfo(user, name,email,profileImgUrl){
+function setUserInfo(user,name,email,profileImgUrl){
     let signinBtn = document.getElementById("signInBtn");
-    console.log(profileImgUrl);
-    signinBtn.textContent = name;
-    //signinBtn.innerHTML = "<img src = " + profileImgUrl + ">";
+    signinBtn.id = "profileBtn";
+    console.log("fajdhsfalkjsdfas");
+    signinBtn.style.backgroundImage = "url(" + profileImgUrl+ ")";
+    console.log(signinBtn);
+
+    let nameTag = document.getElementById("usernameTag");
+    nameTag.textContent = "Username: " + name;
+
+    let icon = document.getElementById("profileImg");
+    icon.src = profileImgUrl;
 
     userInfo = {
         curruser : user, 
@@ -71,7 +78,17 @@ closeBtn.onclick = () => {
     modal.style.display = "none";
 }
 
-uploadBtn.onclick = () => {
+changeBtn.onclick = () => {
+    let imgCode = Math.floor((Math.random() * 1000) + 1);
+    let URLString = "http://api.adorable.io/avatars/285/" + imgCode + ".png";
+    let icon = document.getElementById("profileImg");
+    icon.src = URLString;
+
+    let signinBtn = document.getElementById("profileBtn");
+    signinBtn.style.backgroundImage = "url(" + URLString+ ")";
+
+    console.log(URLString);
+    updateIcon(userInfo.curruser, URLString);
 
 }
 
