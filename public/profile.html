@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MemeMaster</title>
 
-<!-- Firebase API -->
-<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="./style.css" />
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <!-- Firebase API -->
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
-<!-- External scripts for uploadcare UI component -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.min.js"></script>
-<script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.min.js"></script>
+    <!-- External scripts for uploadcare UI component -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.min.js"></script>
+    <script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.min.js"></script>
 
-<script type="module" src="js/firebase/credentials.js"></script>
-<script type="module" src="js/firebase/firebaseActions.js"></script>
+    <script type="module" src="js/firebase/credentials.js"></script>
+    <script type="module" src="js/firebase/firebaseActions.js"></script>
 </head>
 
 <body>
@@ -41,6 +41,23 @@
             <button class="profileBtn" id="changePwBtn">Change Password</button>
             <br>
             <button class="profileBtn" id="uploadBtn">Upload Icon</button>
+        </div>
+
+        <div id="myModal" class="m">
+            <div class="m-content">
+                <h2 class="m-header">Change Password</h2>
+                <div class="m-body">
+                    <br>
+                    <input id='originalPassword' type='password' placeholder='Original Password' />
+                    <br><br> 
+                    <input id='newPassword' type='password' placeholder='New Password' />
+                    <br><br>
+                    <input id='confirmPassword' type='password' placeholder='Confirm Password' />
+                    <br><br>
+                    <button class="profileBtn" id="confirmChangeBtn">Submit</button>
+                    <button class="profileBtn" id="closeBtn">Close</button>
+                </div>
+            </div>
         </div>
 
     </main>

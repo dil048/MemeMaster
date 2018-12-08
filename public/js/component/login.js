@@ -1,4 +1,7 @@
-import {createAccount,signIn} from "../firebase/firebaseActions.js"
+import {
+  createAccount,
+  signIn
+} from "../firebase/firebaseActions.js"
 let div = document.createElement("div");
 div.className = "login-container";
 let log = document.createElement("div");
@@ -18,8 +21,32 @@ function show() {
 function loginSubmit() {
   let userEmail = document.getElementById('loginUser').value;
   let password = document.getElementById('loginPassword').value;
-  signIn(userEmail, password)
+  signIn(userEmail, password, updateIcon);
   return false;
+}
+
+
+function updateIcon(user) {
+  console.log("in icon");
+  // Remove the old userButton
+  let signinBtn = document.getElementById("signInBtn");
+  //let parent = signinBtn.parentElement;
+  while (signinBtn.firstChild) {
+    signinBtn.removeChild(signinBtn.firstChild);
+  }
+  // Add the new userBtm
+  //let userBtn = document.createElement("button");
+  signinBtn.id = "userBtn";
+  let linkNode = document.createElement("a");
+  linkNode.className = "displayNameLink";
+  //TODO: Need to get user's link
+  linkNode.href = "./profile.html";
+  //TODO: Get the link for the profile pic
+  //let profilePic = document.createElement("img");
+  //profilePic.src = 
+  linkNode.innerText = user.displayName;
+  signinBtn.appendChild(linkNode);
+  //parent.appendChild(userBtn);
 }
 
 function registerSubmit() {
@@ -146,4 +173,7 @@ function render() {
   return div;
 }
 
-export {render,show};
+export {
+  render,
+  show
+};
