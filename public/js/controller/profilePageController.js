@@ -15,8 +15,6 @@ var closeBtn = document.getElementById("closeBtn");
 var confirmChangeBtn = document.getElementById("confirmChangeBtn");
 let userInfo;
 
-//var user = authentication.currentUser;
-var name, email, photoUrl, uid, emailVerified;
 window.onload = () => {
     authentication.onAuthStateChanged(function(user) {
         if (user) {
@@ -26,11 +24,15 @@ window.onload = () => {
             console.log("user not signed in");
         }
     });
-    let nameText = document.getElementById("usernameTag");
+
     //nameText[0].innerHTML = "Username: " + user.displayName;
 };
-function setUserInfo(name,email,profileImgUrl){
+function setUserInfo(user, name,email,profileImgUrl){
+    let signinBtn = document.getElementById("signInBtn");
+    signinBtn.innerText = name;
+
     userInfo = {
+        curruser : user, 
         username : name,
         useremail : email,
         userphotoUrl : profileImgUrl,
@@ -38,23 +40,21 @@ function setUserInfo(name,email,profileImgUrl){
     }
 }
 changePwBtn.onclick = () => {
-    console.log("here");
-    console.log(userInfo);
     modal.style.display = "block";
 }
 
 confirmChangeBtn.onclick = function() {
     let password1 = document.getElementById("newPassword");
     let password2 = document.getElementById("confirmPassword");
+    let originalPassword = document.getElementById("originalPassword");
     if (password1.value != password2.value) {
         alert("New Passwords does not match. Please enter again.")
-        password1.value = "";
-        password2.vallue = "";
-        document.getElementById("originalPassword").value = "";
     } else {
-        changePassword(user, password1.value);
-        alert("Change password successfully!");
+        changePassword(userInfo.curruser, originalPassword.value, password1.value);
     }
+    password1.value = "";
+    password2.value = "";
+    originalPassword.value = "";
 }
 
 closeBtn.onclick = function() {

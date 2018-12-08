@@ -37,23 +37,27 @@ function getUserInfo(user,setUserInfo){
   console.log(user);
   db.ref('profile/' + user.uid).once('value').then((snapshot) => {
     userinfo = snapshot.val();
-    console.log(userinfo);
-    setUserInfo(userinfo.displayName,userinfo.email,userinfo.photoURL);
+    setUserInfo(user, userinfo.displayName,userinfo.email,userinfo.photoURL);
     return userinfo;
   }).catch((err) => {
     console.log(err.message);
   })
-  return userinfo;
 }
 
-function changePassword(user, newPassword){
-  console.log(user);
-  user.updatePassword(newPassword).then(function() {
-    // Update successful.
-  }).catch(function(error) {
-    alert("Sorry, an error happened, cannot send reset password email");
-    console.log(error);
-  });
+function changePassword(user, oriPw, newPw){
+  authentication.signInWithEmailAndPassword(user.email, oriPw).then((res)=>{
+    res.user.updatePassword(newPw).then(function() {
+      alert("Change password successfully!");
+    }).catch(function(error) {
+      alert("Change password failed!");
+      console.log("cannot update")
+      console.log(error.mesage);
+    });
+  }).catch((error)=>{
+    alert("Please ente valid password to change your password.");
+    console.log("cannot login");
+    console.log(error.message);
+  })
 }
 
 export {createAccount,signIn,changePassword,getUserInfo};
