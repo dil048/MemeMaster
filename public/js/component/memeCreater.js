@@ -44,11 +44,13 @@ class meme extends HTMLElement {
         context.drawImage(img, 0,0, img.width, img.height,
           centerShift_x,centerShift_y,img.width*ratio, img.height*ratio);
         context.textBaseline="top"; 
-        context.fillText(this.top, 250, 60, 500)
-        context.strokeText(this.top, 250, 60, 500);
+        console.log((canvas.height - img.height*ratio)/2);
+        console.log(canvas.height);
+        context.fillText(this.top, 250, (canvas.height - img.height*ratio)/2, img.width*ratio);
+        context.strokeText(this.top, 250, (canvas.height - img.height*ratio)/2, img.width*ratio);
         context.textBaseline="bottom"; 
-        context.fillText(this.bottom, 250, 340, 500)
-        context.strokeText(this.bottom, 250, 340, 500)
+        context.fillText(this.bottom, 250, 400 - (canvas.height - img.height*ratio)/2,img.width*ratio);
+        context.strokeText(this.bottom, 250, 400 - (canvas.height - img.height*ratio)/2, img.width*ratio);
     };
     this.shadow.appendChild(canvas);
   }
