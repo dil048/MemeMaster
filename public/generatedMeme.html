@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <script type="module" src="js/component/memeCreater.js"></script>
+    <!-- Firebase API -->
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-database.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css"
+    />
+
+      <!-- axios API -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="module" src="js/firebase/credentials.js"></script>
+    <script type="module" src="js/firebase/firebaseActions.js"></script>
+    <script type="module" src="js/component/memeCreater.js"></script>
   </head>
   <body>
-    <h1>
-      hihi
-    </h1>
-    <meme-canvas
-      id="memeCreator"
-      imgSrc="/public/default_picture.jpg"
-      top="TIME TO MAKE"
-      bottom="MEME GREAT AGAIN!"
-    ></meme-canvas>
+    <h1>hihi</h1>
+    <meme-canvas id="memeCreator" imgSrc="" top="" bottom=""></meme-canvas>
+    <script
+      type="module"
+      src="js/controller/generateMemeController.js"
+    ></script>
+    <button id="saveToFireBase"> save</button>
+    <input id="shortenLink" value = "Generating" />
+    <button id="copyText">Copy text</button>
   </body>
 </html>
