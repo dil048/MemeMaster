@@ -7,7 +7,7 @@ import {
 import { authentication } from "../firebase/credentials.js";
 
 let changePwBtn = document.getElementById("changePwBtn");
-let uploadBtn = document.getElementById("uploadBtn");
+let changeBtn = document.getElementById("uploadBtn");
 var modal = document.getElementById("myModal");
 var signOutBtn = document.getElementById("signoutBtn");
 var closeBtn = document.getElementById("closeBtn");
@@ -19,7 +19,7 @@ window.onload = () => {
   authentication.onAuthStateChanged(function(user) {
     if (user) {
       getUserInfo(user, setUserInfo);
-      getUserMeme(user.uid,);
+      getUserMeme(user.uid,setUpTable);
     } else {
       console.log("user not signed in");
     }
@@ -37,28 +37,22 @@ function setUserInfo(user,name,email,profileImgUrl){
     nameTag.textContent = "Username: " + name;
 
     let icon = document.getElementById("profileImg");
-    icon.src = profileImgUrl;
-}
-function setUpTable(input){
-  console.log(input);
-}
-function setUserInfo(user, name, email, profileImgUrl) {
-  let signinBtn = document.getElementById("signInBtn");
-  signinBtn.textContent = name;
-  //signinBtn.innerHTML = "<img src = " + profileImgUrl + ">";
-
-  userInfo = {
-    curruser: user,
-    username: name,
-    useremail: email,
-    userphotoUrl: profileImgUrl
-    //userid : user.uid,
-  };
+    icon.src = profileImgUrl; 
+    
+    userInfo = {
+      curruser: user,
+      username: name,
+      useremail: email,
+      userphotoUrl: profileImgUrl
+      //userid : user.uid,
+    };
 }
 changePwBtn.onclick = () => {
   modal.style.display = "block";
 };
-
+function setUpTable(input){
+  console.log(input);
+}
 confirmChangeBtn.onclick = () => {
   let password1 = document.getElementById("newPassword");
   let password2 = document.getElementById("confirmPassword");
