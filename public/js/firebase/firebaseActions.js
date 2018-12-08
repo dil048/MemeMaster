@@ -91,7 +91,6 @@ function addMemeToAccount(uid, meme) {
   let imageURL = meme.backgroundImage;
   let memeUri = meme.memeUri;
   var d = new Date().toString();
-  console.log(d);
   db.ref("profile/" + uid + "/memes")
     .push({
       topText: topText,
@@ -102,6 +101,7 @@ function addMemeToAccount(uid, meme) {
     })
     .then(res => {
       console.log(res);
+      alert("Success");
     })
     .catch(error => {
       console.log(error.message);
