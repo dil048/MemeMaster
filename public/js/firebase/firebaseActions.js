@@ -32,13 +32,18 @@ function signIn(email, password,callback){
   })
 }
 
-function getUserInfo(user){
+function getUserInfo(user,setUserInfo){
+  var userinfo;
+  console.log(user);
   db.ref('profile/' + user.uid).once('value').then((snapshot) => {
-    var userinfo = snapshot.val();
+    userinfo = snapshot.val();
+    console.log(userinfo);
+    setUserInfo(userinfo.displayName,userinfo.email,userinfo.photoURL);
     return userinfo;
   }).catch((err) => {
     console.log(err.message);
   })
+  return userinfo;
 }
 
 function changePassword(user, newPassword){

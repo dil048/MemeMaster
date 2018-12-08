@@ -13,29 +13,33 @@ var modal = document.getElementById('myModal');
 // Get the <span> element that closes the modal
 var closeBtn = document.getElementById("closeBtn");
 var confirmChangeBtn = document.getElementById("confirmChangeBtn");
+let userInfo;
 
-authentication.onAuthStateChanged(function(user) {
-    if (user) {
-        console.log(user);
-    } else {
-        // No user is signed in.
-    }
-});
 //var user = authentication.currentUser;
 var name, email, photoUrl, uid, emailVerified;
-// if (user) {
-//     console.log("signed in");
-//     userInfo = getUserInfo(user);
-// } else {
-//     console.log("user not signed in");
-// }
-
 window.onload = () => {
+    authentication.onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user);
+            getUserInfo(user,setUserInfo);
+        } else {
+            console.log("user not signed in");
+        }
+    });
     let nameText = document.getElementById("usernameTag");
     //nameText[0].innerHTML = "Username: " + user.displayName;
 };
-
+function setUserInfo(name,email,profileImgUrl){
+    userInfo = {
+        username : name,
+        useremail : email,
+        userphotoUrl : profileImgUrl,
+        //userid : user.uid,
+    }
+}
 changePwBtn.onclick = () => {
+    console.log("here");
+    console.log(userInfo);
     modal.style.display = "block";
 }
 
