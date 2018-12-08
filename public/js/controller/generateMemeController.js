@@ -13,7 +13,7 @@ let memeUri = null;
 window.onload = () => {
   meme = JSON.parse(localStorage.getItem("canvasSaved"));
   if (meme == null) {
-    window.location.href = "/public/404.html";
+    window.location.href = "../../404.html";
   }
   memeUri = "https://ucarecdn.com/" + meme.uuid + "/blob";
   canvas.render({
