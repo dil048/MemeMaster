@@ -57,7 +57,7 @@ generate.onclick = () => {
           top: topText,
           bottom: bottomText
         }));
-        window.location.href = "../../generatedMeme.html";
+        window.location.href = "generatedMeme.html";
       })
       .catch(function(error) {
         console.log(error.message);
