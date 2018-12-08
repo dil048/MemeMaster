@@ -7,7 +7,6 @@ let defaultBottomText = "MEME GREAT AGAIN!";
 
 class meme extends HTMLElement {
   connectedCallback() {
-    console.log("sd");
     this.shadow = this.attachShadow({mode:"open"});
     this.imgSrc = '';
     this.top = '';
@@ -28,7 +27,6 @@ class meme extends HTMLElement {
       this.imgSrc = defaultImage;
     }
     img.src = this.imgSrc;
-    console.log(imgSrc);
     img.onload = () => {
         canvas.width = 500;
         canvas.height = 400;
@@ -37,6 +35,7 @@ class meme extends HTMLElement {
         context.font = "bolder 50px impact";
         context.lineWidth = 4;
         context.textAlign = "center";
+        // Centralize the image on the canvas
         var hRatio = canvas.width/img.width;
         var vRatio = canvas.height/img.height;
         var ratio  = Math.min(hRatio, vRatio);
@@ -45,9 +44,8 @@ class meme extends HTMLElement {
         context.clearRect(0,0,canvas.width, canvas.height);
         context.drawImage(img, 0,0, img.width, img.height,
           centerShift_x,centerShift_y,img.width*ratio, img.height*ratio);
+        // Set baseline for two lines of text
         context.textBaseline="top"; 
-        console.log((canvas.height - img.height*ratio)/2);
-        console.log(canvas.height);
         context.fillText(this.top, 250, (canvas.height - img.height*ratio)/2, img.width*ratio);
         context.strokeText(this.top, 250, (canvas.height - img.height*ratio)/2, img.width*ratio);
         context.textBaseline="bottom"; 

@@ -9,16 +9,18 @@ let log = document.getElementById("login");
 let loginForm = document.getElementById("loginForm");
 let registerForm = document.getElementById("registerForm");
 
+// Hide the modal when not needed
 function hide() {
   signModal.style.display = "none";
 }
-
+// Reveal the form needed
 function show() {
   if(signModal) {
     signModal.style.display = "block";
   }
 }
 
+// Signin
 function loginSubmit() {
   let userEmail = document.getElementById('loginUser').value;
   let password = document.getElementById('loginPassword').value;
@@ -29,6 +31,7 @@ function loginSubmit() {
   return false;
 }
 
+// Update the icon on the top right corner
 function updateIcon(user) {
   console.log("in icon");
   let signinBtn = document.getElementById("signInBtn");
@@ -38,15 +41,12 @@ function updateIcon(user) {
   signinBtn.id = "userBtn";
   let linkNode = document.createElement("a");
   linkNode.className = "displayNameLink";
-  //TODO: Need to get user's link
   linkNode.href = "./profile.html";
-  //TODO: Get the link for the profile pic
-  //let profilePic = document.createElement("img");
-  //profilePic.src = 
   linkNode.innerText = user.displayName;
   signinBtn.appendChild(linkNode);
 }
 
+// Create user account
 function registerSubmit() {
   let userEmail = document.getElementById('registerEmail').value;
   let password1 = document.getElementById('registerPassword1').value;

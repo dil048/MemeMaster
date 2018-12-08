@@ -44,16 +44,17 @@
       <div class="columnMid">
         <meme-canvas class="memePic" id="memeCreator"></meme-canvas>
       </div>
+      <!--Meme Canvas-->
       <div class="columnRight" id="action_center">
         <h5>Step1: </h5>
         <input class="uploadPicELe" type="hidden" role="uploadcare-uploader" id="uploadedImage" data-images-only />
         <br><br>
         <h5>Step2: </h5>
         <label>Top Text:</label>
-        <input id="topText" type="text" value="TIME TO MAKE" />
+        <input id="topText" type="text" maxlength="20" value="TIME TO MAKE" />
         <br>
         <label>Bottom Text:</label>
-        <input id="bottomText" type="text" value="MEME GREAT AGAIN!" />
+        <input id="bottomText" type="text" maxlength="20" value="MEME GREAT AGAIN!" />
         <br><br>
         <h5>Step3: </h5>
         <button id="resetBtn">Reset</button>
