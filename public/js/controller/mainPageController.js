@@ -3,6 +3,9 @@ import { show } from "../component/login.js";
 let d = null;
 window.onload = () => {
   d = loginRender();
+  memeCreator.render({defaultSetting:true});
+  topTextInput.value = memeCreator.top;
+  bottomTextInput.value = memeCreator.bottom;
 };
 let login = document.getElementById("signInBtn");
 let topTextInput = document.getElementById("topText");
@@ -20,8 +23,6 @@ bottomTextInput.oninput = () => {
   memeCreator.render({ bottomText: bottomTextInput.value });
 };
 reset.onclick = () => {
-  topTextInput.value = "";
-  bottomTextInput.value = "";
   memeCreator.reset();
 };
 generate.onclick = () => {
@@ -50,13 +51,13 @@ generate.onclick = () => {
       .post("https://upload.uploadcare.com/base/", body)
       .then((res)=> {
         let uuid = res.data.file;
-        console.log(uuid);
-        window.canvasSaved = {
+        localStorage.setItem("canvasSaved", JSON.stringify({
           uuid:uuid,
           background: image,
           top: topText,
           bottom: bottomText
-        };
+        }));
+        window.location.href = "/public/generatedMeme.html";
       })
       .catch(function(error) {
         console.log(error.message);
