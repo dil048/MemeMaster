@@ -1,7 +1,7 @@
 let canvas = document.createElement("canvas");
 let context = canvas.getContext("2d");
 let uploadInput = document.createElement("input").cloneNode(true);
-let defaultImage = "/public/images/default_picture.jpg"
+let defaultImage = "../../img/default_picture.jpg"
 let defaultTopText = "TIME TO MAKE";
 let defaultBottomText = "MEME GREAT AGAIN!";
 
