@@ -19,6 +19,7 @@ class meme extends HTMLElement {
     canvas.id = 'uploadedImage';
     canvas.style.border = '1px solid #d3d3d3'
     this.imgSrc = (imgSrc!=null) ? imgSrc : this.imgSrc ;
+    img.crossOrigin = "Anonymous"
     img.src = this.imgSrc;
     this.top = (topText!=null) ? topText : this.top;
     this.bottom = (bottomText!=null) ? bottomText : this.bottom;
@@ -35,6 +36,9 @@ class meme extends HTMLElement {
   }
   reset(){
     location.reload();
+  }
+  dataUrl(){
+    return canvas.toDataURL();
   }
 }
 
