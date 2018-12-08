@@ -1,7 +1,7 @@
 let canvas = document.createElement("canvas");
 let context = canvas.getContext("2d");
 let uploadInput = document.createElement("input").cloneNode(true);
-let defaultImage = "./default_picture.jpg"
+let defaultImage = "/public/images/default_picture.jpg"
 let defaultTopText = "TIME TO MAKE";
 let defaultBottomText = "MEME GREAT AGAIN!";
 
@@ -9,31 +9,57 @@ class meme extends HTMLElement {
   connectedCallback() {
     console.log("sd");
     this.shadow = this.attachShadow({mode:"open"});
-    this.imgSrc = this.getAttribute("imgSrc");
-    this.top = this.getAttribute("top");
-    this.bottom = this.getAttribute("bottom");
-    this.render({imgSrc : this.imgSrc,topText : this.top,bottomText : this.bottom});
+    this.imgSrc = '';
+    this.top = '';
+    this.bottom = '';
   }
-  render({imgSrc=null,topText=null,bottomText=null}){
+  render({imgSrc=null,topText=null,bottomText=null,defaultSetting=false}){
     let img = new Image();
     canvas.id = 'uploadedImage';
     canvas.style.border = '1px solid #d3d3d3'
     this.imgSrc = (imgSrc!=null) ? imgSrc : this.imgSrc ;
     img.crossOrigin = "Anonymous"
-    img.src = this.imgSrc;
     this.top = (topText!=null) ? topText : this.top;
     this.bottom = (bottomText!=null) ? bottomText : this.bottom;
+    if(defaultSetting){
+      this.top = defaultTopText;
+      this.bottom = defaultBottomText;
+      this.imgSrc = defaultImage;
+    }
+    img.src = this.imgSrc;
     img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        context.font="50 Arial";
-        context.clearRect(0,0,canvas.width,canvas.length);
-        context.drawImage(img,0,0);
-        context.fillText(this.top,0,200)
-        context.fillText(this.bottom,0,300)
+        canvas.width = 500;
+        canvas.height = 400;
+        context.fillStyle = 'white';
+        context.strokeStyle = 'black 4px';
+        context.font = "bolder 50px impact";
+        context.lineWidth = 4;
+        context.textAlign = "center";
+        var hRatio = canvas.width/img.width;
+        var vRatio = canvas.height/img.height;
+        var ratio  = Math.min(hRatio, vRatio);
+        var centerShift_x = (canvas.width - img.width*ratio) / 2;
+        var centerShift_y = (canvas.height - img.height*ratio) / 2;  
+        context.clearRect(0,0,canvas.width, canvas.height);
+        context.drawImage(img, 0,0, img.width, img.height,
+          centerShift_x,centerShift_y,img.width*ratio, img.height*ratio);
+        context.textBaseline="top"; 
+        context.fillText(this.top, 250, 60, 500)
+        context.strokeText(this.top, 250, 60, 500);
+        context.textBaseline="bottom"; 
+        context.fillText(this.bottom, 250, 340, 500)
+        context.strokeText(this.bottom, 250, 340, 500)
     };
     this.shadow.appendChild(canvas);
   }
+
+  drawImageScaled(img, ctx) {
+    var canvas = ctx.canvas ;
+
+  }
+
+
+
   reset(){
     location.reload();
   }

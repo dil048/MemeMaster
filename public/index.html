@@ -37,18 +37,33 @@
     </div>
   </header>
   <main>
-      <h1>Welcome to meme master!</h1>
-      <meme-canvas id="memeCreator" imgSrc="./images/default_picture.jpg" top="TIME TO MAKE"
-        bottom="MEME GREAT AGAIN!"></meme-canvas>
-      <div id="action_center">
-          <input type="hidden" role="uploadcare-uploader" id="uploadedImage" data-images-only />
-          <label>Top Text</label>
-          <input id="topText" type="text" value="TIME TO MAKE" />
-          <label>Bottom Text</label>
-          <input id="bottomText" type="text" value="MEME GREAT AGAIN!" />
-          <button id="resetBtn">reset</button>
-          <button id="generateBtn">generate</button>
+    <div class="col-container">
+      <div class="columnLeft">
+        <h4>Steps to create memes: </h4>
+        <p>1. Select or upload an image.</p>
+        <p>2. Input top and button text.</p>
+        <p>3. Generate your own customed MEME!!</p>
       </div>
+      <div class="columnMid">
+        <meme-canvas class="memePic" id="memeCreator"></meme-canvas>
+      </div>
+      <div class="columnRight" id="action_center">
+        <h5>Step1: </h5>
+        <input class="uploadPicELe" type="hidden" role="uploadcare-uploader" id="uploadedImage" data-images-only />
+        <br><br>
+        <h5>Step2: </h5>
+        <label>Top Text:</label>
+        <input id="topText" type="text" value="TIME TO MAKE" />
+        <br>
+        <label>Bottom Text:</label>
+        <input id="bottomText" type="text" value="MEME GREAT AGAIN!" />
+        <br><br>
+        <h5>Step3: </h5>
+        <button id="resetBtn">Reset</button>
+        <button id="generateBtn">Generate</button>
+      </div>
+    </div>
+
   </main>
 
   <script type="module" src="js/controller/mainPageController.js"></script>

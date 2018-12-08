@@ -28,14 +28,10 @@ function loginSubmit() {
 
 function updateIcon(user) {
   console.log("in icon");
-  // Remove the old userButton
   let signinBtn = document.getElementById("signInBtn");
-  //let parent = signinBtn.parentElement;
   while (signinBtn.firstChild) {
     signinBtn.removeChild(signinBtn.firstChild);
   }
-  // Add the new userBtm
-  //let userBtn = document.createElement("button");
   signinBtn.id = "userBtn";
   let linkNode = document.createElement("a");
   linkNode.className = "displayNameLink";
@@ -46,7 +42,6 @@ function updateIcon(user) {
   //profilePic.src = 
   linkNode.innerText = user.displayName;
   signinBtn.appendChild(linkNode);
-  //parent.appendChild(userBtn);
 }
 
 function registerSubmit() {
