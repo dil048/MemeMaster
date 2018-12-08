@@ -9,7 +9,17 @@ import {
 let d = null;
 window.onload = () => {
   d = loginRender();
-  memeCreator.render({defaultSetting:true});
+  let memeInStorage = JSON.parse(localStorage.getItem("canvasSaved"));
+  console.log(memeInStorage);
+  if (memeInStorage){
+    memeCreator.render({
+      imgSrc: memeInStorage.background,
+      topText: memeInStorage.top,
+      bottomText: memeInStorage.bottom
+    });
+  }else{
+    memeCreator.render({defaultSetting:true});
+  }
   topTextInput.value = memeCreator.top;
   bottomTextInput.value = memeCreator.bottom;
   authentication.onAuthStateChanged(function(user) {

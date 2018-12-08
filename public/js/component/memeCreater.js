@@ -21,12 +21,14 @@ class meme extends HTMLElement {
     img.crossOrigin = "Anonymous"
     this.top = (topText!=null) ? topText : this.top;
     this.bottom = (bottomText!=null) ? bottomText : this.bottom;
+    console.log(defaultSetting);
     if(defaultSetting){
       this.top = defaultTopText;
       this.bottom = defaultBottomText;
       this.imgSrc = defaultImage;
     }
     img.src = this.imgSrc;
+    console.log(imgSrc);
     img.onload = () => {
         canvas.width = 500;
         canvas.height = 400;
@@ -59,10 +61,8 @@ class meme extends HTMLElement {
     var canvas = ctx.canvas ;
 
   }
-
-
-
   reset(){
+    localStorage.removeItem("canvasSaved");
     location.reload();
   }
   dataUrl(){
