@@ -25,6 +25,7 @@ window.onload = () => {
 function updateProfileBtn(user, name, email, profileImgUrl){
   let signinBtn = document.getElementById("signInBtn");
   signinBtn.innerText = name;
+  signinBtn.id = "profileBtn";
   userInfo = {
       curruser : user, 
       username : name,
@@ -41,7 +42,12 @@ let memeCreator = document.getElementById("memeCreator");
 let reset = document.getElementById("resetBtn");
 let generate = document.getElementById("generateBtn");
 login.onclick = () => {
-  show();
+  let status = document.getElementById("signInBtn");
+  if(status) {
+    show();
+  } else {
+    window.location.href = "./profile.html"
+  }
 };
 topTextInput.oninput = () => {
   memeCreator.render({ topText: topTextInput.value });

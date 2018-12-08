@@ -71,7 +71,7 @@ header{
 .search-container button:hover{
     background-color: lightgray;
 }
-.iconText{
+.iconText, .profileTitleLink{
     margin: 20px;
     font-size: 50px;
     font-family: Impact, Charcoal, sans-serif;
@@ -177,7 +177,7 @@ header{
     width: 200px; 
     height: 200px;
     border-radius: 50%;
-    border: solid 2px;
+    border: solid 4px;
     border-color: darkgray;
 }
 .signoutBtn {
@@ -339,4 +339,18 @@ header{
 
 .prompt{
     color: lightgray;
+}
+
+.profileTitleLink:hover{
+    text-decoration: none;
+    color: orange;
+}
+
+#profileBtn {
+    height: 70px; 
+    width: 70px; 
+    background-size: 100%;
+    border-radius: 35px;
+    margin: 20px;
+    
 }

@@ -5,14 +5,7 @@ function createAccount(email, password, callback) {
     .createUserWithEmailAndPassword(email, password)
     .then(res => {
       let profileName = email.substring(0, email.indexOf("@"));
-      console.log(profileName);
-      let defaultPic = "../";
-      let im = new Image();
-      im.src = defaultPic;
-      im.onload = () => {
-        document.appendChild(im);
-      };
-      console.log(res.user.uid);
+      let defaultPic = "http://api.adorable.io/avatars/285/9794874.png";
       db.ref("profile/" + res.user.uid).set({
         displayName: profileName,
         email: email,
@@ -64,6 +57,10 @@ function getUserInfo(user, setUserInfo) {
     .catch(err => {
       console.log(err.message);
     });
+}
+
+function updateIcon(user, URLString) {
+  db.ref("profile/" + user.uid).update({photoURL: URLString});
 }
 
 function changePassword(user, oriPw, newPw) {
@@ -119,4 +116,4 @@ function getUserMeme(uid,callback) {
       callback(snapshot.val());
     });
 }
-export { createAccount, signIn, changePassword, getUserInfo, addMemeToAccount,getUserMeme };
+export { createAccount, signIn, changePassword, getUserInfo, addMemeToAccount,getUserMeme,updateIcon };

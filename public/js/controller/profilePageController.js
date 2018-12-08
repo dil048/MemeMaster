@@ -1,7 +1,8 @@
 import {
   changePassword,
   getUserInfo,
-  getUserMeme
+  getUserMeme,
+  updateIcon
 } from "../firebase/firebaseActions.js";
 import { authentication } from "../firebase/credentials.js";
 
@@ -25,7 +26,19 @@ window.onload = () => {
   });
   //nameText[0].innerHTML = "Username: " + user.displayName;
 };
+function setUserInfo(user,name,email,profileImgUrl){
+    let signinBtn = document.getElementById("signInBtn");
+    signinBtn.id = "profileBtn";
+    console.log("fajdhsfalkjsdfas");
+    signinBtn.style.backgroundImage = "url(" + profileImgUrl+ ")";
+    console.log(signinBtn);
 
+    let nameTag = document.getElementById("usernameTag");
+    nameTag.textContent = "Username: " + name;
+
+    let icon = document.getElementById("profileImg");
+    icon.src = profileImgUrl;
+}
 function setUpTable(input){
   console.log(input);
 }
@@ -74,13 +87,25 @@ signOutBtn.onclick = () => {
 };
 
 closeBtn.onclick = () => {
-  modal.style.display = "none";
-};
+    modal.style.display = "none";
+}
 
+changeBtn.onclick = () => {
+    let imgCode = Math.floor((Math.random() * 1000) + 1);
+    let URLString = "http://api.adorable.io/avatars/285/" + imgCode + ".png";
+    let icon = document.getElementById("profileImg");
+    icon.src = URLString;
+
+    let signinBtn = document.getElementById("profileBtn");
+    signinBtn.style.backgroundImage = "url(" + URLString+ ")";
+
+    console.log(URLString);
+    updateIcon(userInfo.curruser, URLString);
+};
 uploadBtn.onclick = () => {};
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = (event) => {
   if (event.target == modal) {
     modal.style.display = "none";
   }
