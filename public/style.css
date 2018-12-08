@@ -8,24 +8,24 @@ header{
     padding: 5px;
 }
 .signInBtn{
+    text-align: center;
     float: right;
     width: 150px;
     font-family: "Comic Sans MS", cursive, sans-serif;
     border: none;
     border-radius: 10px;
-    color: white;
     font-weight: bold;
     background-color: gray;
-    margin: 5px;
     margin-top: 15px;
     padding: 7px;
     padding-left: 14px;
     padding-right: 14px;
     font-size: 15px;
     cursor: pointer; 
+    color: white !important;
 }
 
-button:hover {
+.signInBtn:hover {
     background-color: lightgray;
 }
 .search-container {
@@ -117,4 +117,39 @@ button:hover {
 }
 #loginUser, #loginPassword, #registerEmail, #registerPassword1, #registerPassword2:focus {
     outline: none; 
+}
+
+/*Style for profile page*/
+.profile-container{
+    margin: 20px;
+}
+.profileBtn{
+    text-align: center;
+    width: 200px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: gray;
+    margin-top: 15px;
+    padding: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 15px;
+    cursor: pointer; 
+    color: white !important;
+}
+.profileBtn:hover{
+    background-color: lightgray; 
+}
+
+.profileBtn:focus{
+    outline: none; 
+}
+.profileImg{
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%;
+    border: solid 2px;
+    border-color: darkgray;
 }
