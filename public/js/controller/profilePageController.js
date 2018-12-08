@@ -61,11 +61,14 @@ function setUpTable(input) {
     recentMemeList.push(input[key]);
   }
   let label = document.getElementById("title");
+  label.id = "memeTablePrompt";
   if (recentMemeList.length == 0) {
     label.innerText = "No memes found, create some now!";
     return;
   } else {
     label.innerText = "Here are some of the most recent memes you have created";
+  
+  
   }
   // sort base on date
   recentMemeList.sort((d1, d2) => {
@@ -74,14 +77,16 @@ function setUpTable(input) {
     return date2 - date1;
   });
 
+
   for (let index in recentMemeList) {
     if (index >= 5) break; // fetch 5 most recent meme
-    let memeRow = document.getElementById("meme");
-    let dateRow = document.getElementById("dateCreated");
-
+    //let memeRow = document.getElementById("meme");
+    //let dateRow = document.getElementById("dateCreated");
+    let table = document.getElementById("table");
     let image = document.createElement("img");
     image.id = index;
     image.src = recentMemeList[index].memeUri;
+    console.log("adding");
     // click on the meme to edit or create new one
     image.onclick = () => {
       localStorage.setItem(
@@ -94,18 +99,22 @@ function setUpTable(input) {
       );
       window.location.href = "index.html";
     };
-    let th = document.createElement("th");
-    th.append(image);
-    memeRow.append(th);
-    let th2 = document.createElement("th");
+
+    // Generate each row of cell
+    let tr = document.createElement("tr");
+    let td1 = document.createElement("td");
+    td1.append(image);
+    tr.appendChild(td1);
+    let td2 = document.createElement("td");
     let p = document.createElement("p");
     p.innerText = recentMemeList[index].dateCreated;
-    th2.append(p);
-    dateRow.append(th2);
-    let th3 = document.createElement("th");
+    td2.append(p);
+    tr.appendChild(td2);
+    let td3 = document.createElement("td");
     let deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
-    let deleteRow = document.getElementById("delete");
+    deleteBtn.className = "signoutBtn";
+    // Delete button
     deleteBtn.onclick = () => {
       let key = null;
       for (key in input) {
@@ -118,10 +127,13 @@ function setUpTable(input) {
         location.reload();
       }
     };
-    th3.appendChild(deleteBtn);
-    deleteRow.appendChild(th3);
+    td3.appendChild(deleteBtn);
+    tr.appendChild(td3);
+    table.append(tr);
   }
 }
+
+
 // Change password confirmation
 confirmChangeBtn.onclick = () => {
   let password1 = document.getElementById("newPassword");

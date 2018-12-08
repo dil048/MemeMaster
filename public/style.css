@@ -279,12 +279,24 @@ header{
     position: absolute;
 }
 
-.columnLeft, .columnMid, .columnRight {
+.columnLeft, .columnMid, .columnRight, .colPerfLeft, .colPerfright {
     padding: 20px;
     height: 100%;
     border-radius: 10px;
     display: table-cell;
     margin: 0;
+}
+
+.colPerfLeft{
+    text-align: center;
+    font-weight: bold;
+    width: 30%;
+    margin: 20px;
+}
+
+.colPerfright {
+    width: 70%; 
+    text-align: center;
 }
 
 .columnRight{
@@ -390,4 +402,14 @@ header{
 #shortenLink {
     height: 30px;
     text-align: center;
+}
+
+#memeTablePrompt {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+table{
+    position: relative;
+    width: 90%;
 }
