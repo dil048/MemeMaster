@@ -10,6 +10,7 @@ Uploadcare - Used to upload and store meme background as well as meme. Doc locat
 
 Firebase - Used to for authentication and real time database
 
+## Purpose:
 The purpose of this project is to compare performance of vanilla JS with framework such as Angular React and Vuejs
 
 ## Known bugs:
